@@ -68,3 +68,11 @@ it("a gameboard knows when all the ships were sunk", () => {
   gb.hit(pos);
   expect(gb.allSunked()).toBe(true);
 });
+
+it("place a ship above other ship throws error", () => {
+  let gb = new GameBoard(5);
+  let ship = new Ship(1);
+  let pos = new Position(0, 0);
+  gb.placeShip(ship, pos, new Position(1, 0));
+  expect(() => gb.placeShip(ship, pos, new Position(1, 0))).toThrow(Error);
+});

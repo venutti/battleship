@@ -1,6 +1,7 @@
 import Celd from "./Celd.js";
 
 const ERROR_MSJ_INVALID_POS = "That's an invalid position";
+const ERROR_INVALID_PLACEMENT = "You can't place a ship there";
 
 class GameBoard {
   constructor(aLength) {
@@ -37,6 +38,8 @@ class GameBoard {
     let celds = positions.map((pos) => this.getCeldAt(pos));
     if (celds.every((celd) => celd.isEmpty())) {
       celds.forEach((celd) => celd.setShip(aShip));
+    } else {
+      throw new Error(ERROR_INVALID_PLACEMENT);
     }
     this.ships.push(aShip);
   }

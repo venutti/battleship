@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+#gameDisplay {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.board {
+  display: flex;
+}
+
+.celd {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black
+}
+.celd.default {
+  background-color: aqua;
+}
+.celd.hitted {
+  background-color: red;
+}
+.celd.empty {
+  background-color: white;
+}
