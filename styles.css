@@ -1,28 +1,75 @@
+:root {
+  --bg-color: #043f3a;
+  --contrast-color: #f2ff3e;
+}
+
 * {
   box-sizing: border-box;
 }
+
+body {
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 #gameDisplay {
   display: flex;
   justify-content: center;
   gap: 100px;
+  border: 5px solid var(--contrast-color);
+  border-radius: 20px;
+  padding: 20px;
 }
 
 .board {
   display: flex;
+  border: 1px solid black;
 }
-
+.board.enemy .celd {
+  cursor: default;
+  filter: brightness(0.55)
+}
 .celd {
-  width: 30px;
-  height: 30px;
-  border: 1px solid black
+  --size: 30px;
+  width: var(--size);
+  height: var(--size);
+  transition: border-width .3s ease-in-out;
 }
 .celd.default {
-  background-color: aqua;
+  cursor: pointer;
+  border: calc(var(--size)/2) ridge;
+  border-color: rgb(93, 128, 126);
 }
 .celd.hitted {
-  background-color: red;
+  background-color: rgb(161, 19, 19);
+  border: 5px ridge rgb(161, 19, 19);
+}
+.celd.sunk {
+  background-color: rgb(161, 19, 19);
+  border: calc(var(--size)/2) ridge rgb(161, 19, 19);
 }
 .celd.empty {
-  background-color: white;
+  background-color: rgb(19, 109, 161);
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.55);
+}
+.modal {
+  position: absolute;
+  padding: 20px;
+  background-color: var(--bg-color);
+  border-radius: 10px;
+}
+.overlay.close,
+.modal.close {
+  display: none;
 }

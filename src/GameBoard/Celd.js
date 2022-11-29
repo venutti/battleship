@@ -28,6 +28,10 @@ class Celd {
       this.ship.hit();
     }
   }
+  isSunk() {
+    if (!this.ship) return false;
+    return this.ship.isSunk();
+  }
 }
 
 export default Celd;

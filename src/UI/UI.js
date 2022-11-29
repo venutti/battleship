@@ -29,9 +29,8 @@ class UI {
     } else {
       celdContainer.classList = "celd hitted";
     }
-    // testing
-    if (!celd.isEmpty()) {
-      celdContainer.innerText = "X";
+    if (celd.isSunk()) {
+      celdContainer.classList = "celd sunk";
     }
   }
   showGameboard() {

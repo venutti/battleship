@@ -24,6 +24,9 @@ class IA {
   receiveAttack(aPosition) {
     this.gameboard.hit(aPosition);
   }
+  allSunk() {
+    return this.gameboard.allSunk();
+  }
 }
 
 export default IA;

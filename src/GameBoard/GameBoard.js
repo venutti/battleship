@@ -43,7 +43,7 @@ class GameBoard {
     }
     this.ships.push(aShip);
   }
-  allSunked() {
+  allSunk() {
     return this.ships.every((ship) => ship.isSunk());
   }
   hit(aPosition) {

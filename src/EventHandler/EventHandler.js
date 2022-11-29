@@ -1,10 +1,11 @@
 import Position from "../Position/Position.js";
 
 class EventHandler {
-  constructor(boardElement, game) {
+  constructor(boardElement, game, modal) {
     this.boardElement = boardElement;
     this.game = game;
     this.ui = [];
+    this.modal = modal;
   }
 
   init() {
@@ -27,6 +28,15 @@ class EventHandler {
   }
   show() {
     this.ui.forEach((ui) => ui.showGameboard());
+    if (this.game.getWinner()) {
+      this.showWinner();
+    }
+  }
+  showWinner() {
+    this.modal.addHTML(
+      `<h2>El ganador es ${this.game.getWinner().getName()}</h2>`
+    );
+    this.modal.show();
   }
 }
 

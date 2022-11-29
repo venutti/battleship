@@ -6,8 +6,9 @@ import EventHandler from "./EventHandler/EventHandler.js";
 import Player from "./Player/Player.js";
 import Game from "./Game/Game.js";
 import IA from "./Player/IA.js";
+import Modal from "./UI/Modal.js";
 
-const sizesShips = [1, 1, 1, 1, 2, 2, 2, 3, 3, 4];
+const sizesShips = [10];
 const gbSize = 10;
 
 function getRandomInt(max) {
@@ -34,6 +35,15 @@ function buildRandomGameBoard() {
   return gb;
 }
 
+function toggleClose(element) {
+  element.classList.toggle("close");
+}
+
+const modalElement = document.querySelector(".modal");
+const overlayElement = document.querySelector(".overlay");
+const modal = new Modal(modalElement, overlayElement);
+modal.init();
+
 const boardPlayerElement = document.querySelector("#board1");
 const boardEnemyElement = document.querySelector("#board2");
 const gbPlayer = buildRandomGameBoard();
@@ -48,7 +58,7 @@ const player = new Player("Anonimous", gbPlayer);
 const computer = new IA("IA", gbEnemy);
 
 const game = new Game(player, computer);
-const events = new EventHandler(boardEnemyElement, game);
+const events = new EventHandler(boardEnemyElement, game, modal);
 events.addUI(uiEnemy);
 events.addUI(uiPlayer);
 events.init();

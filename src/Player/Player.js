@@ -18,6 +18,9 @@ class Player {
   getGameBoard() {
     return this.gameboard;
   }
+  allSunk() {
+    return this.gameboard.allSunk();
+  }
 }
 
 export default Player;
